@@ -5,7 +5,57 @@
 	<title>实变函数之我见-2-非负简单函数</title>
 </head>
 <body>
-<article></article>
+<article>## 2 非负简单函数篇
+
+  今天，我们看看如何在非负简单函数上定义勒贝格积分。我们都知道闭区间上的阶梯函数是黎曼可积的，非负简单函数就相当于阶梯函数。
+
+  我们仍然从单调收敛和积分可交换的角度出发，注意，<font color=red>从现在开始，我们所说的收敛都指的是几乎处处收敛</font>。我们首先证明，勒贝格积分在非负简单函数上的定义满足单调收敛和积分可交换的条件。
+
+  相比于几乎处处收敛，函数列的一致收敛更有利证明相关的收敛性质，所以 Egoroff 定理就有着举足轻重的作用：
+
+  定理2.1(Egoroff) 设 $f$ 和 $f_n$($n\ge 1$) 都是测度有限的集 D 上的几乎处处有限的可测函数. 若 $f_n$ 在 D 上几乎处处收敛于 f , 则对任何 $\varepsilon > 0$, 有 D 的闭子集 F, s.t $m(D-F)<\varepsilon$, 并且 $f_n$ 在 F 上一致收敛到 f .
+
+  证明：周性伟 实变函数 定理3.3.2。
+
+  Remark. 说句实话，Egoroff 定理比上一节介绍的 Dini 定理好用多了。
+
+  引理2.1 设 g 和 $f_n$ ($n\ge 1$) 都是可测集 $D$ 上的非负简单函数，它们满足以下两条件： (i) 对几乎所有的 $x\in D$, $\{f_n(x)\}_{n\ge 1}$ 单增； (ii) $0\le g(x) \le \mathop{\text{lim}}\limits_{n\rightarrow\infty}f_n(x)$ （几乎处处于 $D$ ）. 则 $\int_D gdx \le \mathop{\text{lim}}\limits_{n\rightarrow\infty}\int_D f_ndx$.
+
+  证明：周性伟 实变函数 引理4.1.1。 令 $h_n(x)=\text{min}\{g(x),f_n(x)\}$, $n\ge 1$, $x\in D$. 则由条件(i)和(ii), 非负简单函数列 $\{h_n(x)\}$ 在 $D$ 上几乎处处收敛于 $g(x)$. 这部分原书的证明中没有详细说明，我这里展开一下。 首先由条件1和条件2，我们可以知道，对于几乎处处的 $x$ 和任意的 $\varepsilon$, 我们都可以找到一个 $N_{x,\epsilon}$, 当 $n > N_{x,\epsilon}$ 时，有 $g(x) &lt; f_n(x) + \varepsilon$. 这样一来，我们就可以定义 $h_n^\varepsilon(x) = \text{min}\{g(x)-\varepsilon, f_n(x)\}$. 很明显我们有 $h_n^\varepsilon(x)\le h_n(x)$. 而 $h_n^\varepsilon(x)$ 几乎处处收敛到 $g(x)-\varepsilon$, 所以我们有几乎处处 $g(x)-\varepsilon = \mathop{\text{limit}}\limits_{n\rightarrow \infty}h^\varepsilon_n(x)\le \mathop{\text{limit}}\limits_{n\rightarrow \infty}h_n(x)\le g(x)$, 由于 $\varepsilon$ 是任意的，所以 $h_n(x)$ 几乎处处收敛到 $g(x)$. 接着原命题的证明。现分两种情形. 情形1. $m(D)<\infty$. 此时由 Egoroff 定理，对任何 $\varepsilon > 0$, 有 $D$ 的可测子集 $D_1$ 使 $m(D-D_1)<\varepsilon$, 并且在 $D_1$ 上 $h_n(x)$ 一致收敛于 $g(x)$. 从而有 N 使得 $g(x) < \varepsilon + h_n(x) \le \varepsilon + f_n(x)$, $x\in D_1, n > N$. 这样当 $n > N$ 时， $\int_{D_1}gdx \le \int_{D_1}(\varepsilon+f_n)dx\le\int_D(\varepsilon+f_n)dx=\varepsilon\cdot m(D)+\int_Df_ndx$, 从而 $\int_{D_1}gdx\le \varepsilon\cdot m(D)+\mathop{\text{lim}}\limits_{n\rightarrow\infty}\int_Df_ndx$. 另一方面，我们有 $\int_{D-D_1}gdx\le \text{max }g(x)\cdot m(D-D_1)\le\varepsilon \cdot \text{max }g(x)$. （由于 g 是非负简单函数，所以 g 在 $D-D_1$ 上的最大值是肯定存在的）。 因此，我们有 $\int_D gdx \le \varepsilon[\text{max }g(x) + m(D)] + \mathop{\text{lim}}\limits_{n\rightarrow\infty}\int_D f_ndx$. 则有 $\varepsilon$ 的任意性可知结论成立。 情形2. $m(D)=\infty$. 此时，对每一 $k\ge 1$, 令 $D_k= D\cap [-k, k]$, 则 $m(D_k)<\infty$. 由上段已证，对每一 $k\ge 1$, $\int_{D_k} gdx \le \mathop{\text{lim}}\limits_{n\rightarrow\infty}\int_{D_k}f_ndx\le \mathop{\text{lim}}\limits_{n\rightarrow\infty}\int_D f_n dx$. 而 $\int_{D_k} g dx = \sum\limits_{j=1}^T b_jm(F_j\cap D_k)$. 由于 $\{D_k\}$ 单增收敛于 D, 故由测度性质， $m(F_j \cap D_k)\rightarrow m(F_j)$ as $k\rightarrow \infty$. 这样我们令 $k\rightarrow \infty$, 则有 $\mathop{\text{lim}}\limits_{k\rightarrow\infty}\int_{D_k} gdx = \sum\limits_{j=1}^T b_jm(F_j) = \int_D gdx$. 从而可得命题成立。
+
+  ----
+
+  从引理2.1我们可以直接得到定理2.2：
+
+  <font color=red>定理2.2</font> 勒贝格积分在可测集 D 上的非负简单函数空间上满足 <font color=red>单增收敛和积分可交换</font> . 也就是说，对于可测集 D 上的一列单增非负简单函数列 $\{f_n\}$, 并且它们收敛到 D 上的非负简单函数 $f$, 那么 $\int_D fdx = \mathop{\text{lim}}\limits_{n\rightarrow\infty}\int_D f_ndx$.
+
+  证明：显然 $\int_D f_ndx\le \int_D fdx$, 所以 $\mathop{\text{lim}}\limits_{n\rightarrow\infty}\int_D f_ndx \le \int_D fdx$. 另一方面，令引理2.1中的 g 为 f, 那么我们有 $\int_D fdx = \mathop{\text{lim}}\limits_{n\rightarrow\infty}\int_D f_ndx​$.
+
+  Remark. 请注意，在定理2.2中，我们是没有假设 $f_n$ 是勒贝格可积的，只要 $f_n$ 是勒贝格积分有定义就可以了，大不了大家都是 $\infty$.
+
+  Remark. 我们先对非负简单函数定义了勒贝格积分。在<font color=red>勒贝格可积的非负简单函数</font>的范畴内，勒贝格积分确实是满足单调收敛和积分可交换的性质的。但是，需要注意，必须是 $\{f_n\}$ 必须是勒贝格可积的，如果 $\{f_n\}$ 不是勒贝格可积的，那么只能满足单增收敛和积分可交换，不能满足单减收敛和积分可交换，我们可以举一个例子看看：
+
+  $f = 0 $, $x\in [0, \infty)$. $f_n(x) = \begin{cases} 0& x\le n \\\\ 1& n &lt; x \end{cases}$
+
+  可以看到，$\{f_n\}$ 单调递减收敛到 $f$, 但是 $\lim\limits_{n\rightarrow\infty}\int_D f_n(x)dx=\infty\neq 0=\int_D \lim\limits_{n\rightarrow\infty} f_n(x)dx = \int_D fdx$. 这是主要的原因就是 $\{f_n\}$ 不是勒贝格可积的。
+
+  Question: 如果 D 是闭区间，而不是$[0, \infty)$ 会有帮助吗？
+
+  从上面的例子我们从一个角度看出来为什么要强调勒贝格可积，因为勒贝格可积函数必然在 D 上是几乎处处有限的。
+
+  总之，我们必须注意，不是所有非负函数都是勒贝格可积的，有些只是勒贝格积分可定义的。所以必须明确我们研究的范围是勒贝格可积的那部分。
+
+  <font color=red>定理2.3</font> 对于可测集 D 上的一列单调非负简单函数列 $\{f_n\}$, 它们都是勒贝格可积的，并且它们收敛到 D 上的非负简单函数 $f$, 那么 $f$ 也是勒贝格可积的，并且 $\int_D fdx = \mathop{\text{lim}}\limits_{n\rightarrow\infty}\int_D f_ndx$.
+
+  证明：考虑单减的情况。由控制收敛定理，$|f_n|$ 被 $f_1$ 控制住了，而由条件 $f_1$ 是勒贝格可积的，所以 $f$ 勒贝格可积，且 $\int_D fdx = \int_D \mathop{\text{lim}}\limits_{n\rightarrow\infty} f_ndx = \mathop{\text{lim}}\limits_{n\rightarrow\infty}\int_D f_ndx$.
+
+  Remark. 其实对于单减收敛序列而言，只要保证存在 $n$，是的 $f_n$ 勒贝格可积，就可以使用控制收敛定理了。因为 $f_N$, N>n 肯定也是勒贝格可积的。
+
+  Remark. 留一个待处理的问题。非负可测函数空间上的一般的收敛和积分可交换吗？
+
+prev note: [实变函数之我见-1-勒贝格积分的新的切入](2020011604.html)
+
+next note: [实变函数之我见-3-非负可测函数篇](2020011606.html)</article>
 </body>
 <script src="https://static.outiy5.com/js/adv_dev.js?css=table1,basic;js=mathjax;mod=md"></script>
 </html>

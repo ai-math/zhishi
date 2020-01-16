@@ -5,7 +5,71 @@
 	<title>实变函数之我见-3-非负可测函数篇</title>
 </head>
 <body>
-<article></article>
+<article>## 3 非负可测函数
+
+  上一篇我们讲到，在<font color=red>勒贝格可积的非负简单函数</font>的范畴内，单调收敛和（勒贝格）积分时可交换的。
+
+  但是我们知道，对于一列单调收敛的非负简单函数列 $\{f_i\}$ , 我们不能保证其总是收敛到非负简单函数，因此，我们具有必要扩充勒贝格积分的研究范围。
+
+  我们仍然从单调收敛和积分可交换的角度出发。那么问题也就变成了，如何扩充勒贝格积分的定义到非负可测函数空间上，使得其和非负简单函数空间上的勒贝格积分兼容，并且满足单调收敛和积分可交换的性质？
+
+  为了方便叙述，下面我们均假设一列非负简单函数列 $\{f_i\}$ 单增收敛到函数 $f$.
+
+  我们一步步来看。首先是<font color=red>兼容性</font>：如果 $f$ 恰好是非负简单函数，我们知道 $\int_D fdx = \mathop{\text{lim}}\limits_{n\rightarrow\infty}\int_D f_ndx = \int_D \mathop{\text{lim}}\limits_{n\rightarrow\infty} f_ndx$. 那么出于兼容性的考虑，在形式上，即便是 $f$ 是一般的可测函数，也应该满足 $\int_D fdx = \mathop{\text{lim}}\limits_{n\rightarrow\infty}\int_D f_ndx = \int_D \mathop{\text{lim}}\limits_{n\rightarrow\infty} f_ndx$.
+
+  如果不满足的话，那么当 $f$ 退化成非负简单函数的时候，就会产生矛盾。满足了就兼容了。
+
+  其次，兼容性满足，我们就得考虑考虑合理性。这样的定义合不合理，要考虑两个东西：
+
+  1, 是不是所有的非负可测函数都能找到<font color=red>单增</font>收敛到它的非负简单函数列；
+
+  2, 不同路径达到的积分值相不相等。
+
+  由于我们先前只是在非负简单函数上定义了勒贝格积分，现在，我们想要对 非负简单函数列<fc #ff0000>单增</fc>收敛到的可测函数 定义勒贝格积分。事实上，这是非常自然的做法，不能表示成非负简单函数列的极限的可测函数显然无法利用我们前面在非负简单函数空间上建立的结果。
+
+  但是，下面我们声称，非负简单函数列的<fc #ff0000>单增</fc>极限空间包含了非负可测函数空间，也就是说任一非负可测函数都可以表示成单增收敛的非负简单函数列的极限！因此，对任何非负可测函数，我们都可以利用在非负简单函数空间上的结果来定义勒贝格积分。也就是说
+
+  <font color=red>定理3.1</font> 对于任一非负可测函数 $f$, 都存在一列单增收敛的非负简单函数列 $\{f_i\}$ 收敛到它. 特别地，我们找到一列单增收敛的，<font color=red>取值为有理数</font>的非负简单函数列 $\{f_i\}$ 收敛到它.
+
+  Remark. <fc #ff0000>事实上，非负简单函数空间的单增极限外延最多只能到非负可测函数</fc>。也就是说 非负简单函数列的单增极限空间 $=$ 非负可测函数空间. 非负简单函数列的极限空间 $=$ 非负可测函数空间.
+
+  因此我们就解决了合理性的第 1 点，在非负可测函数空间，我们都可以利用 $\int_D fdx = \mathop{\text{lim}}\limits_{n\rightarrow\infty}\int_D f_ndx = \int_D \mathop{\text{lim}}\limits_{n\rightarrow\infty} f_ndx$ 的方式来定义勒贝格积分。
+
+  接着我们要解决合理性的第 2 点。我们知道，对于任意给定的非负可测函数 $f$, 可能存在两列单增收敛的非负简单函数列 $\{f_i\}$ 和 $\{f'_i\}$ 收敛到它，那么我们想问 $\mathop{\text{lim}}\limits_{n\rightarrow\infty} f_ndx = \mathop{\text{lim}}\limits_{n\rightarrow\infty} f'_ndx$ 吗？事实上，如果 $\{f_i\}$ 和 $\{f'_i\}$ 的极限是非负简单函数，我们可以保证这一定成立，那么当 $\{f_i\}$ 和 $\{f'_i\}$ 的极限是一般的非负可测函数呢？我们有下面的定理：
+
+  <font color=red>定理3.2</font> 设 $\{f_n\}$ 和 $\{g_n\}$ 是可测集 D 上两列非负简单函数，而且对几乎所有的 $x\in D$, $\{f_n(x)\}$ 和 $\{g_n(x)\}$ 都<font color=red>单增</font>收敛于相同的极限，则 $\mathop{\text{lim}}\limits_{n\rightarrow\infty} f_ndx = \mathop{\text{lim}}\limits_{n\rightarrow\infty} g_ndx$
+
+  这就解决了合理性 (2). 这说明，勒贝格积分确实是可以通过非负简单函数列的单增极限的方式推广到非负可测函数空间的。或者说，勒贝格积分确实是可以通过 单增收敛和积分可交换 的方式推广到非负可测函数空间的！
+
+  而由非负可测函数的勒贝格积分的定义可以看出，非负可测函数到非负可测函数是满足单增收敛和积分可交换的条件的。那么，我们自然想问，在整个非负可测函数空间上，单增收敛和积分可交换吗？这就是鼎鼎大名的 Levi单调收敛定理.
+
+  <font color=red>定理3.3</font>(Levi单调收敛定理) 设 $f$ 和 $f_n(n\ge 1)$ 都是可测集 D 上的非负可测函数，而且对所有的 $x\in D$, $\{f_n\}$ 单增收敛于 $f(x)$, 则 $\int_D fdx = \mathop{\text{lim}}\limits_{n\rightarrow\infty}\int_D f_ndx = \int_D \mathop{\text{lim}}\limits_{n\rightarrow\infty} f_ndx$.
+
+  推论3.4（逐项积分）设 $\{u_k\}_{k\ge 1}$ 是可测集 D 上的一列非负可测函数，则 $\int_D (\sum\limits_{k=1}^\infty u_k)dx=\sum\limits_{k=1}^\infty\int_D u_k dx$.
+
+  Remark. 非负可测函数空间上的单调收敛和积分可交换吗？一般不可交换，考虑上一节给出的例子。但是，在勒贝格可积的非负可测函数空间上，单调收敛和积分可交换。怎么说明这一点，我们不妨证明一下下面的引理3.1
+
+  引理3.1 设 $f$ 和 $f_n(n\ge 1)$ 都是可测集 D 上的勒贝格可积的非负可测函数，而且对所有的 $x\in D$, $\{f_n\}$ 单减收敛于 $f(x)$, 则 $\int_D fdx = \mathop{\text{lim}}\limits_{n\rightarrow\infty}\int_D f_ndx = \int_D \mathop{\text{lim}}\limits_{n\rightarrow\infty} f_ndx$.
+
+  证明：由控制收敛定理，$|f_n|$ 被 $f_1$ 控制住了，而由条件 $f_1$ 是勒贝格可积的，所以 $f$ 勒贝格可积，且 $\int_D fdx = \mathop{\text{lim}}\limits_{n\rightarrow\infty}\int_D f_ndx = \int_D \mathop{\text{lim}}\limits_{n\rightarrow\infty} f_ndx$.
+
+  Remark. 其实对于单减收敛序列而言，只要保证存在 $n$，是的 $f_n$ 勒贝格可积，就可以使用控制收敛定理了。因为 $f_N$, N>n 肯定也是勒贝格可积的。
+
+  Remark. 非负可测函数空间上的一般的收敛和积分可交换吗？Fatou定理可以告诉我们答案。
+
+  定理3.5(Fatou定理) 设 $f_n(m\ge 1)$ 都是可测集 D 上的非负可测函数，则 $\int_D \varliminf\limits_{n\rightarrow\infty} f_ndx\le \varliminf\limits_{n\rightarrow\infty} \int_D f_n dx$.
+
+  Fatou定理很强大，它既没有假设 $f_n$ 是勒贝格可积的，也没有假设它们单增收敛或者单调收敛.
+
+  类似地，我们有如下的定理：设 $f_n(m\ge 1)$ 都是可测集 D 上的非负可测函数，它们单调收敛到非负可测函数 $f$，则 $\int_D fdx = \int_D \lim\limits_{n\rightarrow\infty} f_ndx = \lim\limits_{n\rightarrow\infty}\int_D  f_ndx$.
+
+  话说，非负可测函数的单调极限肯定是非负可测函数呀(●'◡'●)。
+
+  非负可测函数都是勒贝格积分可定义的，但是不都是勒贝格可积的。
+
+prev note: [实变函数之我见-2-非负简单函数](2020011605.html)
+
+next note: [实变函数之我见-4-一般可测函数](2020011607.html)</article>
 </body>
 <script src="https://static.outiy5.com/js/adv_dev.js?css=table1,basic;js=mathjax;mod=md"></script>
 </html>

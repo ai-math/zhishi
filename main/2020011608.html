@@ -5,7 +5,54 @@
 	<title>实变函数之我见-5-fatou_控制收敛_单调收敛</title>
 </head>
 <body>
-<article></article>
+<article>## 5 Faout, 单调收敛 和 控制收敛
+
+到现在，我们已经初步建立了可测函数上的勒贝格积分。由于我们这个系列主要的目的是研究 收敛和积分可交换 的问题，所以这篇文章就来个初步的总结。
+
+定理5.1 Fatou定理 设 $f_n(m\ge 1)$ 都是可测集 D 上的非负可测函数，则 $\int_D \varliminf\limits_{n\rightarrow\infty} f_ndx\le \varliminf\limits_{n\rightarrow\infty} \int_D f_n dx$.
+
+定理5.2 Levi单调收敛定理 设 $f$ 和 $f_n(n\ge 1)$ 都是可测集 D 上的非负可测函数，而且对所有的 $x\in D$, $\{f_n\}$ 单增收敛于 $f(x)$, 则 $\int_D fdx = \mathop{\text{lim}}\limits_{n\rightarrow\infty}\int_D f_ndx = \int_D \mathop{\text{lim}}\limits_{n\rightarrow\infty} f_ndx$.
+
+定理5.3 控制收敛定理 设 $f$ 和 $f_n$ 都是可测集 D 上的可测函数。若以下两条件满足：
+
+(i) 在 D 上 $f_n(x)$ 几乎处处收敛于 $f(x)$;
+(ii) 存在 $g\in L(D)$,  使对每一 $n\ge 1$, 在 D 上几乎处处有 $|f_n(x)|\le g(x)$,
+
+则 $f$ 和 $f_n$ 都在 D 上可积，并且 $\lim\limits_{n\rightarrow\infty}\int_D f_n dx = \int_D fdx$.
+
+从Fatou定理可以自然推出下面的结论：
+
+1, 如果 $f_n$ 是收敛的，那就可得 $\int_D fdx\le \varliminf\limits_{n\rightarrow\infty} \int_D f_n dx$. 不过积分我们不能保证是收敛的；有过 $\int_D f_ndx$ 也是收敛的，那么就变成了 $\int_D fdx\le \lim\limits_{n\rightarrow\infty} \int_D f_n dx$. 我们可以看个例子：
+
+令 $f_n(x)=n\chi_{[0,\frac{1}{n}]}(x)$, 则 $\int_0^1 \lim\limits_{n\rightarrow\infty} f_n(x) dx = 0 &lt; 1=\lim\limits_{n\rightarrow\infty}\int_0^1 f_n(x)dx$.
+
+2, 如果 $f_n​$ 是单调收敛的，那么 $\int_D f_ndx​$ 也是收敛的，那么自然有 $\int_D fdx\le \lim\limits_{n\rightarrow\infty} \int_D f_n dx​$.
+
+3, 如果 $f_n$ 是控制收敛的，那么 $\int_D f_ndx​$ 也是收敛的，那么自然有 $\int_D fdx\le \lim\limits_{n\rightarrow\infty} \int_D f_n dx$
+
+Fatou的推论 3 结合控制收敛定理，我们知道推论3中的不等号可以改成等号。
+
+从控制收敛定理可以推出一坨结论：
+
+1, 对于单减的勒贝格可积的非负可测函数列 f\_n 来说，极限和积分可交换；同理，对于单增的勒贝格可积的非正可测函数列 f\_n 来说，极限和积分可交换。
+
+控制收敛定理的推论1结合Levi单调收敛定理，我们知道：
+
+对于单调收敛的勒贝格可积的可测函数列 $f_n$ 来说，极限和积分可交换
+
+需要注意的是，这些定理是没办法相互覆盖的。
+
+对于Levi单调收敛定理来说，$f_n$ 未必是勒贝格可积的；就算 $f_n$ 是勒贝格可积的，也不能保证 $f_n$ 可以被控制住，也就是也不能保证 $f$ 也是勒贝格可积的，最多只能保证 $f$ 是勒贝格可定义的。
+
+但是 Levi单调收敛定理的一种特殊情况确实可以由控制收敛定理推出来，那就是：
+
+命题5.1 D 上的一列非负可测函数列 $f_n$ 单增收敛到 $f$, 并且已知 f 是勒贝格可积的，那么 $\int_D fdx = \lim\limits_{n\rightarrow \infty} \int_D f_ndx$.
+
+这时候无论是Levi单调收敛定理，还是控制收敛定理都可以证明命题5.1.
+
+Fatou定理并不要求非负可测函数列 $f_n$ 是收敛的，控制收敛定理并不要求 $f_n$ 是单调收敛的，所以 Fatou定理 和 控制收敛定理 是非常强大的定理和工具，应用范围非常的广。相比之下，Levi单调收敛定理重要性就小一些。
+
+prev note: [实变函数之我见-4-一般可测函数](2020011607.html)</article>
 </body>
 <script src="https://static.outiy5.com/js/adv_dev.js?css=table1,basic;js=mathjax;mod=md"></script>
 </html>

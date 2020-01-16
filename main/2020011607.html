@@ -5,7 +5,143 @@
 	<title>实变函数之我见-4-一般可测函数</title>
 </head>
 <body>
-<article></article>
+<article>## 4 一般可测函数
+
+### 差和积分可交换
+
+到了一般可测函数的情况，就比较复杂了，由于负部的存在，我们不能简单地使用 单增收敛和积分可交换 的方法推广到一般的可测函数的空间。事实上，对于一般可测函数空间，我们需要 <font color=red>减法和积分可交换</font> 的性质来实现推广。为什么呢？什么是减法和积分可交换？
+
+我们知道，在非负可测函数空间内，减法和积分可交换。也就是说，对非负可测函数 f 和 g, 如果 f-g 也是非负可测函数，那么自然有 $\int_D (f-g) = \int_D f- \int_D g$ 成立。但是如果 f-g 是一般的可测函数呢？单从非负可测函数空间上的勒贝格积分定义显然是无法解决这个问题的，因此具有必要推广勒贝格积分的定义到一般的可测函数空间上。
+
+我们讲，要想推广勒贝格积分的定义，必须满足兼容性和合理性两点。
+
+<font color=red>兼容性要求：</font>
+
+对于一般可测函数 $h=f-g$, 如果 f 和 g 都是勒贝格可积的，那么必须满足 $\int_D h = \int_D f - \int_D g$, 这样才能保证 h 退化成非负可测函数时可以兼容。
+
+如果将一般可测函数的积分定义成 $\int_D h = \int_D f - \int_D g$, 那么自然也就满足兼容性要求了。
+
+对于上面的积分定义的<font color=red>合理性要求</font>：
+
+1, 是否对于任何的可测函数都可以按照上面的方式定义勒贝格积分？也就是，是不是对于任何的可测函数都可以表示成非负可测函数的差？
+
+2, 是否满足一致性？也就是说，如果一个一般可测函数可以表示成多组非负可测函数的差，按照上面的方式定义积分是否保证相等？
+
+对于合理性1，事实上，任何可测函数 h 都可以表示成 $h = h_+ - h_-$, 其中 $h_+ = max\{0, h\}$, $h_- = max\{0, -h\}$ 都是非负可测函数。因此，合理性1是成立的。
+
+对于合理性2，其实就是证明下面的引理：
+
+引理4.1 对于任意的非负可测函数 $f_1, f_2, g_1, g_2$, 满足 $f_1-g_1=f_2-g_2$, 那么是否有 $\int_D f_1 - \int_D g_1 = \int_D f_2 - \int_D g_2$ ?
+
+证明：因为 $f_1-g_1$ 未必是非负可测函数，所以不能直接使用非负可测函数空间的积分和减法可交换的性质。
+事实上， 因为 $f_1-g_1=f_2-g_2$， 所以有 $f_1+g_2=f_2+g_1$，因此我们可以使用非负可测函数的加法和积分可交换的性质，可得 $\int_D f_1+ \int_D g_2 = \int_D(f_1+g_2)=\int_D(f_2+g_1) = \int_D f_2+ \int_D g_1$, 因此，$\int_D f_1 - \int_D g_1 = \int_D f_2 - \int_D g_2$. 即一致性是满足的。
+
+所以，上面的，在一般可测函数空间上的勒贝格积分的定义是合理的。
+
+下面我们证明 减法和积分可交换 在勒贝格可积的一般可测函数空间上也是成立的。也就是说，在接下来的处理中，我们认为接触到的可测函数都是勒贝格可积的，否则的话不好处理。
+
+定理4.1 f 和 g 勒贝格可积（一般我们将勒贝格可积，这个函数默认就是可测的），那么 $\int_D f-g = \int_D f - \int_D g$.
+
+证明：$f_+-f_-+g_+-g_-=f-g=(f-g)_+-(f-g)_-$, 所以可得 $f_++g_++(f-g)_-=(f-g)_++f_-+g_-$, 因为由非负可测函数的积分的性质，我们有 $\int_Df_++\int_Dg_++\int_D(f-g)_-\\=\int_D [f_++g_++(f-g)_-] \\=\int_D [(f-g)_++f_-+g_-] \\=\int_D(f-g)_++\int_Df_-+\int_D g_- $.
+所以有 $\int_D(f-g)_+ - \int_D(f-g)_- = \int_Df_+ - \int_Df_- + \int_Dg_+ - \int_Dg_-$.
+即 $\int_D f-g = \int_D f - \int_D g$.
+
+Remark. 这样我们就证明了可积函数的差和积分可交换的性质。请注意，这时候我说可积函数，那就是指全体勒贝格可积的可测函数了，这是不言而喻的。而对于一般可测函数而言，加 和 减 是对称的，所以由定理4.1可以自然地推出下面的引理：
+
+引理4.2 f 和 g 勒贝格可积（一般我们将勒贝格可积，这个函数默认就是可测的），那么 $\int_D f+g = \int_D f + \int_D g$.
+
+证明： 在定理4.1中，令 f=0, 我们有 $\int_D -g = -\int_D g$. 然后，$\int_D f+g = \int_D f-(-g) = \int_D f-\int_D(-g)= \int_D f - (- \int_D g) =  \int_D f +  \int_D g$. 证毕.
+
+Remark. 对于一般可测函数的积分的处理我们一般都会回到非负可测函数的考虑范围。而对于非负可测函数来说，它们对于减法是有偏见的，因为两个非负可测函数的差未必还是非负可测函数，所以当我只是想要使用非负可测函数的性质的时候，我们需要尽量将减法转换为加法，以便处理。例如，对于非负可测函数来说，加法和积分肯定是可交换，因为f+g仍然是非负可测函数，但是f-g未必是非负可测函数，导致我们仅使用非负可测函数的性质无法处理。即需要注意，对于非负可测函数来说，加和减不是对称的，需要尽量转减法为加法。
+
+Remark. 当然，在证明了可测函数的勒贝格积分的性质之后，我们在处理更高层次的问题时就可以直接基于可测函数的勒贝格积分的结论了，不需要在局限在非负可测函数的范围内。
+
+### 一般可测函数的积分
+
+接下来，我们看看一般可测函数的勒贝格积分的正式的定义方式，当然，其实还是比较直接的：
+
+$f_+ = max\{0, f\}$, $f_- = max\{0, -f\}$, 那么 $f_+$ 和 $f_-$ 都是非负可测函数，于是当 $\int_D f_+dx$ 和 $\int_D f_-dx$ 不同时为 $\infty$ 时，我们就可以定义
+
+$\int_D fdx = \int_D f_+dx - \int_D f_-dx$.
+
+注意，上面的积分只有在 $\int_D f_+dx$ 和 $\int_D f_-dx$ 不同时为 $\infty$ 时才有意义，也就是说，其实勒贝格积分和黎曼积分一样，都不能解决形如 $\int_{-\infty}^\infty xdx$ 的积分的问题。尽管对称性告诉我们积分值为0，但是需要引入额外的机制来处理，暂且按下不表。
+
+Remark. 对于任何可测集 D，任意的非负可测函数 f 在 D 上都是积分有定义的。但是对于特定的可测集 D 来说，并不是所有的（一般）可测函数都是在其上积分有定义的，例如 $f(x)=x$ 和 $D=(-\infty,\infty)$. 也就是说 L(D) 不能覆盖 D 上的可测函数的空间！ f 在 D 上可测，并代表 f 在 D 上积分有定义！
+
+我们现在关心的时，能够使用单增收敛和积分可交换的观点来分析一般可测函数上的勒贝格积分。也就是说，下面的命题是否成立：
+
+命题4.2 设 $f$ 和 $f_n(n\ge 1)$ 都是可测集 D 上的一般可测函数，而且对所有的 $x\in D$, $\{f_n\}$ 单增收敛于 $f(x)$, 那么有 $\int_D fdx = \int_D \lim\limits_{n\rightarrow\infty} f_ndx = \lim\limits_{n\rightarrow\infty}\int_D f_ndx$ 吗？
+
+很遗憾，我们做不到这一点。很明显，我们知道 $f_{n+}$ 单增收敛到 $f_+$, $-f_{n-}$ <font color=red>单增收敛</font>到 $-f_-$. 所以 $\int_D fdx = \int_D f_+dx + \int_D -f_-dx = \int_D \lim f_{n+}dx + \int_D \lim -f_{n-}dx = \lim \int_D f_{n+}dx + \int_D \lim -f_{n-}dx $. 右边的那个极限拿不出来，因为对于非正可测函数而言，它们是 单减收敛和积分可交换的。
+
+我们可以看一个例子：$f = 0 $, $x\in (-\infty, \infty)$. $f_n(x) = \begin{cases}0& x > -n \\\\-1& x &lt; -n\end{cases}$
+
+那么你可能说，如果 $f_{n+}$ 和 $f_{n-}$ 都是勒贝格可积的呢？也就是，如果命题4.3：
+
+命题4.3 设 $f$ 和 $f_n(n\ge 1)$ 都是可测集 D 上的一般可测函数，而且对所有的 $x\in D$, $\{f_n\}$ 单调收敛于 $f(x)$, 并且 $|f_n|$ 勒贝格可积, 那么有 $\int_D fdx = \int_D \lim\limits_{n\rightarrow\infty} f_ndx = \lim\limits_{n\rightarrow\infty}\int_D f_ndx$ 吗？
+
+那我们讲，这个命题是成立的。为什么？请看证明。
+
+仍然是分成 正部 和 负部 两部分考虑。不妨设为是单增的情况。那么 $f_{n-}$ 单减收敛到 $f_-$. 由于 $f_{n-}$ 是单减的，所以 $|f_{n-}|$ 可以被 $f_{1-}$ 控制住，即 $|f_{n-}|\le f_{1-}$，又由于 $|f_1|$ 勒贝格可积，所以由控制收敛定理可得 $f_-$ 可积，并且 $\int_D f_-dx = \int_D \lim\limits_{n\rightarrow\infty} f_{n-}dx = \lim\limits_{n\rightarrow\infty}\int_D f_{n-}dx$.
+
+所以 $\int_D fdx = \int_D f_+dx + \int_D -f_-dx \\= \int_D \lim f_{n+}dx + \int_D \lim -f_{n-}dx \\= \lim \int_D f_{n+}dx + \lim \int_D  -f_{n-}dx \\= \lim (\int_D f_{n+}dx + \int_D  -f_{n-}dx) \\= \lim \int_D f_{n}dx$.
+
+所以命题4.3成立。
+
+---
+
+Remark. 对于一般的可测函数来说，无论是单增收敛和单减收敛，都需要加上序列勒贝格可积的前提条件。 而非负可测函数由于非负这一性质，对于单增收敛的情况，就不需要一定是序列勒贝格可积的，只要序列勒贝格积分可定义就行了，而对于非负可测函数来说，它肯定是勒贝格积分可定义的。
+
+但是对于可测函数的收敛和积分可交换而言，还存在更一般的结论，那就是伟大的控制收敛定理，我一般也叫它控制收敛和积分可交换。
+
+定理4.4（控制收敛定理） 设 $f$ 和 $f_n$ 都是可测集 D 上的可测函数。若以下两条件满足：
+
+(i) 在 D 上 $f_n(x)$ 几乎处处收敛于 $f(x)$;
+(ii) 存在 $g\in L(D)$,  使对每一 $n\ge 1$, 在 D 上几乎处处有 $|f_n(x)|\le g(x)$,
+
+则 $f$ 和 $f_n$ 都在 D 上可积，并且 $\lim\limits_{n\rightarrow\infty}\int_D f_n dx = \int_D fdx$.
+
+在给出控制收敛定理的证明之前，我们先看看这个定理的内涵：
+
+1, 控制收敛和积分可交换；
+2, 并没有假设任何单调收敛的条件，也就是一般的收敛经过控制以后也可以具有很好的性质；
+3, 虽然我们讲 $f_n$ 的极限存在, 但是这并不代表 $\int_D f_n$ 的极限存在，所以这个极限存不存在实际上也是需要证明的；因为这时候没有单调收敛的条件，如果有单调收敛，那么由单调收敛定理，$f_n$ 收敛必然可以推出 $\int_D f_n$ 的收敛。控制收敛定理不仅说明了这个极限存在，而且还说明这个极限和积分可交换，妙哉妙哉！щ(ʘ╻ʘ)щ
+
+证明：还是前面一贯的套路，尽量把一般的可测函数变换成非负可测函数来处理。
+
+首先证明可积性。由于对于任何 n 都有 $|f_n|\le g$, 再由 $|f_n|\rightarrow |f|$, 所以有 $|f|\le g$. 因而由 g 的可积性，我们知道 $f$ 和 $f_n$ 都是可积的。
+
+其次，由 $|f_n|\le g$ 可知， $g\pm f_n \ge 0$, 因此我们就得到了一列非负可测函数列。那么由 Fatou 定理，可知
+
+$\int_D \varliminf\limits_{n\rightarrow\infty} (g\pm f_n) dx \le \varliminf\limits_{n\rightarrow\infty} \int_D (g\pm f_n) dx$.
+
+由于 g 是可积的，所以我们可以直接把上面的式子中的 g 给分离出来，主要有两点 $\varliminf\limits_{n\rightarrow\infty} (g\pm f_n) = g\pm \varliminf\limits_{n\rightarrow\infty} f_n$. $\varliminf\limits_{n\rightarrow\infty} \int_D (g\pm f_n) dx = \varliminf\limits_{n\rightarrow\infty} (\int_D gdx \pm\int_D f_n dx) = \int_D gdx \pm \varliminf\limits_{n\rightarrow\infty} \int_D f_n dx$.
+
+因此我们就得到了 $\int_D \varliminf\limits_{n\rightarrow\infty} \pm f_n dx \le \varliminf\limits_{n\rightarrow\infty} \int_D \pm f_n dx$. 也就是说：
+
+$\int_D \varliminf\limits_{n\rightarrow\infty} f_n dx \le \varliminf\limits_{n\rightarrow\infty} \int_D f_n dx$
+
+$\int_D \varliminf\limits_{n\rightarrow\infty} -f_n dx \le \varliminf\limits_{n\rightarrow\infty} \int_D -f_n dx$
+
+由 $f_n \rightarrow f$, 我们可得：
+
+$\int_D f dx \le \varliminf\limits_{n\rightarrow\infty} \int_D f_n dx$
+
+$\int_D -f dx \le \varliminf\limits_{n\rightarrow\infty} \int_D -f_n dx$
+
+从而 $ \varlimsup\limits_{n\rightarrow\infty} \int_D f_n dx \le \int_D fdx \le \varliminf\limits_{n\rightarrow\infty} \int_D f_n dx $.
+
+这个式子真是蕴含无穷啊，由 $ \varlimsup\limits_{n\rightarrow\infty} \int_D f_n dx \le \varliminf\limits_{n\rightarrow\infty} \int_D f_n dx $, 可知极限 $ \lim\limits_{n\rightarrow\infty} \int_D f_n dx $ 存在，并且这个极限恰好等于 $ \int_D fdx $ !
+
+
+Review: 这个 fatou 定理用的是真的妙，不仅证出了最终结论，而且顺便解决了积分序列的收敛性问题，妙不可言！怎么想到的！
+
+
+---
+
+prev note: [实变函数之我见-3-非负可测函数篇](2020011606.html)
+
+next note: [实变函数之我见-5-fatou\_控制收敛\_单调收敛](2020011608.html)</article>
 </body>
 <script src="https://static.outiy5.com/js/adv_dev.js?css=table1,basic;js=mathjax;mod=md"></script>
 </html>

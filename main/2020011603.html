@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简单函数与可测函数的联系</title>
+</head>
+<body>
+<article>我们先用一个图总结一下：
+
+<img src="https://raw.githubusercontent.com/ai-math/picbed/master/20200116182333.png"/>
+
+列几个经典的结论：
+
+1, f 是 D 上的可积函数，对任何的 $\varepsilon > 0$, 有 D 上取有理数值的简单函数 h 使得 $\int_D |f-h|dx < \varepsilon $.
+
+对于 f 非负的情况，很明显，可以找到这样一个序列 $f_n$, 取有理数值，并且几乎处处收敛到 f.
+
+对于一般可测的 f, $|f-h| = |f_+-f_- - (h_1-h_2)| \le |f_+-h_1| + |f_--h_2|$. 由此可得。
+
+将可测函数使用简单函数代替，在有些问题中可以处理的很方便。</article>
+</body>
+<script src="https://static.outiy5.com/js/adv_dev.js?css=table1,basic;js=mathjax;mod=md"></script>
+</html>
